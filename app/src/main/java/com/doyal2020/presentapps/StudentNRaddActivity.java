@@ -86,7 +86,7 @@ public class StudentNRaddActivity extends AppCompatActivity {
                 }
                 if (shift.length()>3) {
 
-                    shiftEdittext.setError("The shift name must be 3 digit,,Exp: 2rd");
+                    shiftEdittext.setError("The shift name must be 3 digit,,Exp: 2nd");
                     shiftEdittext.requestFocus();
                     return;
                 }
@@ -115,7 +115,7 @@ public class StudentNRaddActivity extends AppCompatActivity {
                 String current_Uid=mCurrent_user.getUid();
                 StudentNRHandler studentHander=new StudentNRHandler(studnentN,roll,shift,group);
                 mDatabase = FirebaseDatabase.getInstance().getReference("PresentApps").child("UserData");
-                mDatabase.child(current_Uid).child("SubjectData").child("StudentDetails").child(valuee)
+                mDatabase.child(current_Uid).child("SubjectData").child("StudentDetails").child(valuee).child(mDatabase.push().getKey())
 
                         .setValue(studentHander).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

@@ -36,7 +36,7 @@ public class StudentNRActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private FirebaseUser mCurrent_user;
 
-
+    String value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class StudentNRActivity extends AppCompatActivity {
         String department_value=getIntent().getStringExtra("department");
         String semester_value=getIntent().getStringExtra("semester");
         String subject_value=getIntent().getStringExtra("subject");
-        final String value=department_value.concat(semester_value).concat(subject_value);
+        value=department_value.concat(semester_value).concat(subject_value);
 
 
         recyclerView=findViewById(R.id.student_recyclerView_Id);
@@ -58,6 +58,7 @@ public class StudentNRActivity extends AppCompatActivity {
         detailsAdapter=new StudentDetailsAdapter(StudentNRActivity.this,studentNRHandlerList);
         recyclerView.setAdapter(detailsAdapter);
 
+<<<<<<< HEAD
         mCurrent_user= FirebaseAuth.getInstance().getCurrentUser();
         String mCurent_uid=mCurrent_user.getUid();
 
@@ -84,6 +85,8 @@ public class StudentNRActivity extends AppCompatActivity {
 
             }
         });
+=======
+>>>>>>> 76dbd0b4a54c253df5759e3a0be9d7c7fbf64025
 
 
 
@@ -104,6 +107,51 @@ public class StudentNRActivity extends AppCompatActivity {
         });
 
         //.............FloatingActionButton  start......................//
+
+
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+
+
+        mCurrent_user= FirebaseAuth.getInstance().getCurrentUser();
+        String mCurent_uid=mCurrent_user.getUid();
+
+
+        mDatabase = FirebaseDatabase.getInstance().getReference("PresentApps").child("UserData");
+        mDatabase.child(mCurent_uid).child("SubjectData").child("StudentDetails").child(value).
+                addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        studentNRHandlerList.clear();
+
+                        for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                            String name=dataSnapshot1.child("student").getValue().toString();
+                            String roll=dataSnapshot1.child("roll").getValue().toString();
+                            String shift=dataSnapshot1.child("shift").getValue().toString();
+                            String group=dataSnapshot1.child("group").getValue().toString();
+
+                            StudentNRHandler data=new StudentNRHandler(name,roll,shift,group);
+                            studentNRHandlerList.add(data);
+                            detailsAdapter.notifyDataSetChanged();
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
 
 
     }
