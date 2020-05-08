@@ -97,10 +97,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position, View view) {
 
-                if (position==0){
-                    Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                    SubjectAddHandler selsecteditem=subejctList.get(position);
+                    String sendDepartment=selsecteditem.getDepartment();
+                    String sendSubjectName=selsecteditem.getSubject();
+                    String sendSemester=selsecteditem.getSemester();
+
+
+                    Intent intent = new Intent(MainActivity.this, StudentNRActivity.class);
+
+                    intent.putExtra("department",sendDepartment);
+                    intent.putExtra("semester",sendSemester);
+                    intent.putExtra("subject",sendSubjectName);
+
                     startActivity(intent);
-                }
+
+
 
                 Toast.makeText(getApplicationContext(), "OnItemClick   "+position, Toast.LENGTH_SHORT).show();
 

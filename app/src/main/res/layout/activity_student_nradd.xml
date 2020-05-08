@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+   android:layout_margin="40dp"
+    android:layout_height="match_parent"
+    tools:context=".StudentNRaddActivity">
+
+
+
+    <EditText
+        android:inputType="text"
+        android:id="@+id/student_name_Add_Id"
+        android:hint=" student name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:inputType="numberDecimal"
+        android:layout_below="@id/student_name_Add_Id"
+        android:id="@+id/rollNmbr_add_Id"
+        android:hint=" roll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:inputType="text"
+        android:layout_below="@id/rollNmbr_add_Id"
+        android:id="@+id/shift_add_Id"
+        android:hint="shift"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+  <EditText
+        android:inputType="text"
+        android:layout_below="@id/shift_add_Id"
+        android:id="@+id/group_add_Id"
+        android:hint="group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <Button
+        android:id="@+id/addButton_add_Id"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentRight="true"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_below="@id/group_add_Id"
+        android:text="add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
+</RelativeLayout>

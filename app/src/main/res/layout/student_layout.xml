@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#EEC85F"
+    android:layout_marginBottom="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/studentName_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="33dp"
+        android:text="StudentName"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/roll_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/studentName_id"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="10dp"
+        android:text="Roll"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/shift_Id"
+        android:layout_marginStart="100dp"
+        android:text="shift:2nd"
+        android:layout_below="@id/roll_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:id="@+id/group_Id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/roll_id"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="8dp"
+        android:text="Group: A" />
+
+    <Button
+        android:layout_below="@id/studentName_id"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:id="@+id/present_button_Id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="0dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="11dp"
+        android:text="Present" />
+
+    <Button
+           style="@style/Widget.AppCompat.Button.Colored"
+           android:id="@+id/Absent_button_Id"
+            android:layout_width="wrap_content"
+           android:layout_marginRight="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/present_button_Id"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="13dp"
+            android:text="Absent" />
+
+
+</RelativeLayout>
