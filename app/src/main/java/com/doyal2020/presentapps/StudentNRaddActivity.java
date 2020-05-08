@@ -39,8 +39,9 @@ public class StudentNRaddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student_nradd);
 
 
+
         final String valuee=getIntent().getStringExtra("SendValue");
-        Toast.makeText(this, ""+valuee, Toast.LENGTH_SHORT).show();
+
 
         studentName=findViewById(R.id.student_name_Add_Id);
         rollNumber=findViewById(R.id.rollNmbr_add_Id);
@@ -110,14 +111,9 @@ public class StudentNRaddActivity extends AppCompatActivity {
                 sProgressDialog.show();
 
 
-
                 mCurrent_user= FirebaseAuth.getInstance().getCurrentUser();
                 String current_Uid=mCurrent_user.getUid();
-
-
                 StudentNRHandler studentHander=new StudentNRHandler(studnentN,roll,shift,group);
-
-
                 mDatabase = FirebaseDatabase.getInstance().getReference("PresentApps").child("UserData");
                 mDatabase.child(current_Uid).child("SubjectData").child("StudentDetails").child(valuee)
 
@@ -136,9 +132,6 @@ public class StudentNRaddActivity extends AppCompatActivity {
 
                     }
                 });
-
-
-
 
             }
         });

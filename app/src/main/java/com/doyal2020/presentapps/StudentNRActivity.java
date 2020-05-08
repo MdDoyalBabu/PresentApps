@@ -63,7 +63,7 @@ public class StudentNRActivity extends AppCompatActivity {
 
 
         mDatabase = FirebaseDatabase.getInstance().getReference("PresentApps").child("UserData");
-        mDatabase.child(mCurent_uid).child("SubjectData").child("StudentDetails").child(value).
+        mDatabase.child(mCurent_uid).child("SubjectData").child("StudentDetails").
                 addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

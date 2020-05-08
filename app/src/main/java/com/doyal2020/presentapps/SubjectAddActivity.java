@@ -43,6 +43,7 @@ public class SubjectAddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_subject_add);
 
 
+
         sDepartment = findViewById(R.id.department_name_Id);
         sSubject = findViewById(R.id.subject_name_Id);
         sSemester = findViewById(R.id.semester_name_Id);
