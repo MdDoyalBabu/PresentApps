@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
     private FirebaseUser mCurrent_user;
+    String mCurent_uid;
 
 
     @Override
@@ -65,32 +66,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-        mCurrent_user=FirebaseAuth.getInstance().getCurrentUser();
-        String mCurent_uid=mCurrent_user.getUid();
-
-        mDatabase = FirebaseDatabase.getInstance().getReference("PresentApps").child("UserData");
-
-        mDatabase.child(mCurent_uid).child("SubjectData").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                subejctList.clear();
-
-                for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                    SubjectAddHandler data=dataSnapshot1.getValue(SubjectAddHandler.class);
-                    subejctList.add(data);
-                    subjectAddAdapter.notifyDataSetChanged();
-                }
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
 
         subjectAddAdapter.setOnItemClickLisener(new SubjectAddAdapter.ClickListener() {
@@ -149,6 +124,33 @@ public class MainActivity extends AppCompatActivity {
         if (currentUser==null){
           sendStart();
 
+        }else{
+
+            mCurrent_user=FirebaseAuth.getInstance().getCurrentUser();
+
+            mCurent_uid = mCurrent_user.getUid();
+            mDatabase = FirebaseDatabase.getInstance().getReference("PresentApps").child("UserData");
+
+            mDatabase.child(mCurent_uid).child("SubjectData").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    subejctList.clear();
+
+                    for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                        SubjectAddHandler data=dataSnapshot1.getValue(SubjectAddHandler.class);
+                        subejctList.add(data);
+                        subjectAddAdapter.notifyDataSetChanged();
+                    }
+
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
         }
 
     }
