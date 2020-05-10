@@ -11,7 +11,6 @@ public class PresentShowHandler {
     public PresentShowHandler(){
 
 
-
     }
 
     public PresentShowHandler(String time, String present, String roll) {

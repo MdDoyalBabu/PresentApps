@@ -53,6 +53,8 @@ public class SubjectAddActivity extends AppCompatActivity {
         sAddButton = findViewById(R.id.addButton_Id);
 
 
+
+
         ////Add button start .....................................
 
         sAddButton.setOnClickListener(new View.OnClickListener() {

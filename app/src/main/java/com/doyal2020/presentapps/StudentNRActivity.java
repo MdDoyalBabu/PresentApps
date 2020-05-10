@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.doyal2020.AllmyAdapter.StudentDetailsAdapter;
+import com.doyal2020.AllmyAdapter.SubjectAddAdapter;
 import com.doyal2020.HandlerAllclass.StudentNRHandler;
 import com.doyal2020.HandlerAllclass.SubjectAddHandler;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -58,6 +59,41 @@ public class StudentNRActivity extends AppCompatActivity {
 
         detailsAdapter=new StudentDetailsAdapter(StudentNRActivity.this,studentNRHandlerList);
         recyclerView.setAdapter(detailsAdapter);
+
+
+
+        detailsAdapter.setOnItemClickLisener(new StudentDetailsAdapter.ClickListener() {
+            @Override
+            public void onItemClick(int position, View view) {
+
+                StudentNRHandler selsecteditem=studentNRHandlerList.get(position);
+               String name=selsecteditem.getStudent();
+                String roll=selsecteditem.getRoll();
+                String group=selsecteditem.getGroup();
+                String shift=selsecteditem.getShift();
+
+
+                String subjectName=selsecteditem.getSubjectName();
+                String value=name.concat(roll).concat(group).concat(shift).concat(subjectName);
+
+
+
+                Intent intent=new Intent(StudentNRActivity.this,PresentAbsentShow.class);
+                intent.putExtra("sendValue",value);
+
+                startActivity(intent);
+
+                Toast.makeText(getApplicationContext(), "OnItemClick   "+position, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onItemLongClick(int position, View view) {
+                Toast.makeText(getApplicationContext(), "OnLongItemClick   "+position, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
 
         mCurrent_user= FirebaseAuth.getInstance().getCurrentUser();
         String mCurent_uid=mCurrent_user.getUid();

@@ -18,7 +18,8 @@ import java.util.List;
 public class SubjectAddAdapter extends RecyclerView.Adapter<SubjectAddAdapter.MyViewHolder>{
 
 
-    private  static  ClickListener clickListener;
+    public static ClickListener clickListener;
+
 
 
 
@@ -103,6 +104,9 @@ public class SubjectAddAdapter extends RecyclerView.Adapter<SubjectAddAdapter.My
     public interface ClickListener{
 
         void onItemClick(int position, View view);
+
+
+
         void  onItemLongClick(int position,View view);
 
 

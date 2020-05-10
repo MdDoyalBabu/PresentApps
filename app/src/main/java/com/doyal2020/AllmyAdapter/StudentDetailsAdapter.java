@@ -30,7 +30,8 @@ import java.util.List;
 
 public class StudentDetailsAdapter extends RecyclerView.Adapter<StudentDetailsAdapter.MyViewHolder> {
 
-    Context context;
+    private  static ClickListener clickListener;
+    private  Context context;
     private List<StudentNRHandler> studentNRHandlers;
 
     private DatabaseReference mDatabase;
@@ -140,7 +141,7 @@ public class StudentDetailsAdapter extends RecyclerView.Adapter<StudentDetailsAd
         return studentNRHandlers.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener {
 
         TextView nameTextview;
         TextView rollTextView;
@@ -159,6 +160,37 @@ public class StudentDetailsAdapter extends RecyclerView.Adapter<StudentDetailsAd
             groupTextview=itemView.findViewById(R.id.group_Id);
             presentButton=itemView.findViewById(R.id.present_button_Id);
             absentButton=itemView.findViewById(R.id.absent_button_Id);
+
+
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            clickListener.onItemClick(getAdapterPosition(),v);
+
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            clickListener.onItemLongClick(getAdapterPosition(),v);
+            return false;
         }
     }
+    public interface ClickListener{
+
+        void onItemClick(int position, View view);
+        void  onItemLongClick(int position,View view);
+
+
+    }
+
+    public void  setOnItemClickLisener(StudentDetailsAdapter.ClickListener clickLisener){
+
+        StudentDetailsAdapter.clickListener=clickLisener;
+
+    }
+
 }
