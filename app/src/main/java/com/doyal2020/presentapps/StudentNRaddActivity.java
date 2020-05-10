@@ -41,6 +41,7 @@ public class StudentNRaddActivity extends AppCompatActivity {
 
 
         final String valuee=getIntent().getStringExtra("SendValue");
+        final String subject_Value=getIntent().getStringExtra("subject_value");
 
 
         studentName=findViewById(R.id.student_name_Add_Id);
@@ -113,7 +114,7 @@ public class StudentNRaddActivity extends AppCompatActivity {
 
                 mCurrent_user= FirebaseAuth.getInstance().getCurrentUser();
                 String current_Uid=mCurrent_user.getUid();
-                StudentNRHandler studentHander=new StudentNRHandler(studnentN,roll,shift,group);
+                StudentNRHandler studentHander=new StudentNRHandler(studnentN,roll,shift,group,subject_Value);
                 mDatabase = FirebaseDatabase.getInstance().getReference("PresentApps").child("UserData");
                 mDatabase.child(current_Uid).child("SubjectData").child("StudentDetails").child(valuee).child(mDatabase.push().getKey())
 

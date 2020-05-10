@@ -6,16 +6,27 @@ public class StudentNRHandler {
     String roll;
     String shift;
     String group;
+    String subjectName;
+
+
+    public String getSubjectName() {
+        return subjectName;
+    }
+
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
+    }
 
     public  StudentNRHandler(){
 
     }
 
-    public StudentNRHandler(String student, String roll, String shift, String group) {
+    public StudentNRHandler(String student, String roll, String shift, String group,String subjectName) {
         this.student = student;
         this.roll = roll;
         this.shift = shift;
         this.group = group;
+        this.subjectName = subjectName;
     }
 
     public String getStudent() {

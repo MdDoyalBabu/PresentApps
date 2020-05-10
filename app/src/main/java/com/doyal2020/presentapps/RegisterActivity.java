@@ -127,7 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                         } else {
                             rProgressDialog.hide();
-                            Toast.makeText(RegisterActivity.this, "UnSuccessful", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "UnSuccessful"+task.getException(), Toast.LENGTH_SHORT).show();
                         }
 
                     }

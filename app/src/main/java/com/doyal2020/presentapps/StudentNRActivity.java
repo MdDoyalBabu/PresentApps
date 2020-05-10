@@ -28,6 +28,7 @@ import java.util.List;
 public class StudentNRActivity extends AppCompatActivity {
 
 
+    String subject_value;
     private FloatingActionButton floatingActionButton;
     private RecyclerView recyclerView;
 
@@ -46,7 +47,7 @@ public class StudentNRActivity extends AppCompatActivity {
 
         String department_value=getIntent().getStringExtra("department");
         String semester_value=getIntent().getStringExtra("semester");
-        String subject_value=getIntent().getStringExtra("subject");
+         subject_value=getIntent().getStringExtra("subject");
         value=department_value.concat(semester_value).concat(subject_value);
 
 
@@ -58,7 +59,6 @@ public class StudentNRActivity extends AppCompatActivity {
         detailsAdapter=new StudentDetailsAdapter(StudentNRActivity.this,studentNRHandlerList);
         recyclerView.setAdapter(detailsAdapter);
 
-<<<<<<< HEAD
         mCurrent_user= FirebaseAuth.getInstance().getCurrentUser();
         String mCurent_uid=mCurrent_user.getUid();
 
@@ -85,9 +85,6 @@ public class StudentNRActivity extends AppCompatActivity {
 
             }
         });
-=======
->>>>>>> 76dbd0b4a54c253df5759e3a0be9d7c7fbf64025
-
 
 
         floatingActionButton=findViewById(R.id.floating_ad_button_Id);
@@ -101,6 +98,7 @@ public class StudentNRActivity extends AppCompatActivity {
                 Intent intent=new Intent(StudentNRActivity.this,StudentNRaddActivity.class);
 
                 intent.putExtra("SendValue",value);
+                intent.putExtra("subject_value",subject_value);
                 startActivity(intent);
 
             }
@@ -136,7 +134,7 @@ public class StudentNRActivity extends AppCompatActivity {
                             String shift=dataSnapshot1.child("shift").getValue().toString();
                             String group=dataSnapshot1.child("group").getValue().toString();
 
-                            StudentNRHandler data=new StudentNRHandler(name,roll,shift,group);
+                            StudentNRHandler data=new StudentNRHandler(name,roll,shift,group,subject_value);
                             studentNRHandlerList.add(data);
                             detailsAdapter.notifyDataSetChanged();
                         }
